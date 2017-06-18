@@ -24,6 +24,7 @@ int InvertedIndex::find(const string &term, Postlist &postlist) {
         cerr << "term: " << term << " not exist" << endl;
         return -1;
     }
+    cerr << "InvertedIndex::find term: " << term << " offset:"  << offset << endl;
 
     int ret = postlistFile.find(offset , postlist);
     if (ret < 0) {

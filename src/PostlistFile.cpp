@@ -18,6 +18,7 @@ int PostlistFile::append(int offset, int docid) {
 
     Postlist &postlist = it->second;
     postlist.push_back(docid);
+    cerr << "offset:" << offset << ", docid:" << docid << endl;
     return 0;
 }
 
