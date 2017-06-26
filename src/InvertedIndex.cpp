@@ -33,3 +33,22 @@ int InvertedIndex::find(const string &term, Postlist &postlist) {
     }
     return 0;
 }
+
+void InvertedIndex::print() {
+    printf("index:%s\n", indexName.c_str());
+    map<string, int> &term2offset = dict.getTerm2offset();
+    for(map<string, int>::iterator it = term2offset.begin();
+        it != term2offset.end();
+        it++) {
+        string indexValue = it->first;
+        int offset = it->second;
+
+        Postlist postlist;
+        int ret = postlistFile.find(offset , postlist);
+        printf("  term:%s docids:", indexValue.c_str());
+        for(int i = 0; i< postlist.size(); i++) {
+            printf("%d ", postlist[i]);
+        }
+        printf("\n");
+    }
+}
